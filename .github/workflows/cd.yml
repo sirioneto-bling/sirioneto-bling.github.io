@@ -19,7 +19,7 @@ jobs:
     deploy:
         if: ${{ github.event.workflow_run.conclusion == 'success' }}
         environment:
-          name: build
+          name: github-pages
           url: ${{ steps.deployment.outputs.page_url }}
         runs-on: ubuntu-latest
         steps:
@@ -44,10 +44,15 @@ jobs:
             uses: actions/download-artifact@v4
             with:
               name: build
+              path: dist/
               run-id: ${{ env.ci_run_id }}
+
+          - name: Upload build artifact for Continuous Deployment workflow
+            uses: actions/upload-pages-artifact@v3
+            with:
+              name: github-pages
+              path: dist/
 
           - name: Deploy to GitHub Pages
             id: deployment
             uses: actions/deploy-pages@v4
-            with:
-              artifact_name: build
