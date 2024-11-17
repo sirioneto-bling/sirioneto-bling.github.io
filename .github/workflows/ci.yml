@@ -109,6 +109,5 @@ jobs:
       - name: Upload builded app artifact for Continuous Deployment workflow
         uses: actions/upload-artifact@v4
         with:
-          name: github-pages
-          path: dist
-          retention-days: 7
+          name: build
+          path: dist/
