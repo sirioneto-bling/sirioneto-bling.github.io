@@ -49,7 +49,7 @@ jobs:
         run: npm run test:coverage
 
       - name: Upload Coverage Report as Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: coverage-report
           path: coverage/lcov.info
@@ -106,8 +106,8 @@ jobs:
       - name: Build application with Vite
         run: npm run build
 
-      - name: Upload artifact for GitHub Pages deployment
-        uses: actions/upload-pages-artifact@v3
+      - name: Upload builded app artifact for Continuous Deployment workflow
+        uses: actions/upload-artifact@v4
         with:
           name: build
           path: dist
