@@ -32,14 +32,13 @@ jobs:
         id: get_run_id
         run: |
           CI_RUN_ID=$(gh run list --workflow "Continuous Integration" --json databaseId,status --limit 1 | jq -r '.[0].databaseId')
-
           if [ -z "$CI_RUN_ID" ]; then
             echo "Erro: Não foi possível encontrar o último run bem-sucedido do CI na branch 'main'."
             exit 1
           fi
-
-          echo "CI run ID: $CI_RUN_ID"
           echo "ci_run_id=$CI_RUN_ID" >> $GITHUB_ENV
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Download artifact from CI
         uses: actions/download-artifact@v4
