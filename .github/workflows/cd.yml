@@ -1,14 +1,12 @@
 name: Continuous Deployment
 
 on:
-  # This workflow is triggered when the Continuous Integration workflow has completed
   workflow_run:
     workflows: ["Continuous Integration"]
     types:
       - completed
 
 permissions:
-  # Set permissions for the workflow
   contents: read          # Read access to the repository contents
   pages: write            # Write access for GitHub Pages
   id-token: write         # Write access for ID token
@@ -18,9 +16,7 @@ concurrency:
   cancel-in-progress: false # Do not cancel any in-progress runs
 
 jobs:
-  # Job to deploy the application to GitHub Pages
   deploy:
-    # The deploy job runs only if the previous workflow concluded successfully
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     environment:
       name: github-pages
@@ -28,13 +24,29 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Get the run ID of the last successful CI workflow
+        id: get_run_id
+        run: |
+          CI_RUN_ID=$(gh run list --workflow "Continuous Integration" --json databaseId,status --limit 1 | jq -r '.[0].databaseId')
+
+          if [ -z "$CI_RUN_ID" ]; then
+            echo "Erro: Não foi possível encontrar o último run bem-sucedido do CI na branch 'main'."
+            exit 1
+          fi
+
+          echo "CI run ID: $CI_RUN_ID"
+          echo "ci_run_id=$CI_RUN_ID" >> $GITHUB_ENV
 
       - name: Download artifact from CI
         uses: actions/download-artifact@v4
         with:
-          name: build        # The name of the artifact to download
-          path: ./dist      # Path where the artifact will be saved
+          name: build
+          github-token: ${{ secrets.ARTIFACT_DEPLOY_TOKEN }}
+          run-id: ${{ env.ci_run_id }}
 
       - name: Deploy to GitHub Pages
         id: deployment
