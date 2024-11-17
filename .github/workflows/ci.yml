@@ -106,7 +106,7 @@ jobs:
       - name: Build application with Vite
         run: npm run build
 
-      - name: Upload builded app artifact for Continuous Deployment workflow
+      - name: Upload build artifact for Continuous Deployment workflow
         uses: actions/upload-artifact@v4
         with:
           name: build
