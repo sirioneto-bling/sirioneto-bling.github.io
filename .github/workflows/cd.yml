@@ -49,6 +49,8 @@ jobs:
 
           - name: Upload build artifact for Continuous Deployment workflow
             uses: actions/upload-pages-artifact@v3
+            with:
+              name: github-pages
 
           - name: Deploy to GitHub Pages
             id: deployment
