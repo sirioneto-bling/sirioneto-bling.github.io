@@ -26,9 +26,8 @@ jobs:
       - name: Download artifact from CI
         uses: actions/download-artifact@v4
         with:
-          name: build # The name of the artifact to download
+          name: build
           github-token: ${{ secrets.ARTIFACT_DEPLOY_TOKEN }}
-          repository: sirioneto-bling/sirioneto-bling.github.io
           run-id: ${{ github.event.workflow_run.id }}
 
       - name: Deploy to GitHub Pages
