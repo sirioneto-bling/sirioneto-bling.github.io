@@ -34,7 +34,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build        # The name of the artifact to download
-          path: ./dist      # Path where the artifact will be saved
+          path: dist      # Path where the artifact will be saved
 
       - name: Deploy to GitHub Pages
         id: deployment
