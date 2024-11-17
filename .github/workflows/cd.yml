@@ -28,11 +28,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Delay to ensure CI has completed artifact upload
-        run: |
-          echo "Aguardando 10 segundos para garantir que o CI completou o upload do artefato..."
-          sleep 10
-
       - name: Get the run ID of the last successful CI workflow
         id: get_run_id
         run: |
