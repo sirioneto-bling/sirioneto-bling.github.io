@@ -26,7 +26,7 @@ jobs:
       - name: Get the run ID of the last successful CI workflow
         id: get_run_id
         run: |
-          CI_RUN_ID=$(gh run list --workflow "Continuous Integration" --json databaseId,status --jq 'map(select(.status=="success")) | .[0].databaseId')
+          CI_RUN_ID=$(gh run list --workflow "Continuous Integration" --json databaseId,status --limit 1 | jq -r '.[0].databaseId')
           echo "CI run ID: $CI_RUN_ID"
           echo "ci_run_id=$CI_RUN_ID" >> $GITHUB_ENV
 
