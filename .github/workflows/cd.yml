@@ -23,12 +23,17 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
       - name: Get the run ID of the last successful CI workflow
         id: get_run_id
         run: |
           CI_RUN_ID=$(gh run list --workflow "Continuous Integration" --json databaseId,status --limit 1 | jq -r '.[0].databaseId')
           if [ -z "$CI_RUN_ID" ]; then
-            echo "Erro: Não foi possível encontrar o último run bem-sucedido do CI na branch 'main'."
+            echo "Erro: Não foi possível encontrar o último run bem-sucedido do CI"
             exit 1
           fi
           echo "ci_run_id=$CI_RUN_ID" >> $GITHUB_ENV
