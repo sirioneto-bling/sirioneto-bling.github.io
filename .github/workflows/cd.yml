@@ -28,7 +28,7 @@ jobs:
         run: |
           CI_RUN_ID=$(gh run list --workflow "Continuous Integration" --json databaseId,status --limit 1 | jq -r '.[0].databaseId')
           if [ -z "$CI_RUN_ID" ]; then
-            echo "Erro: Não foi possível encontrar o último run bem-sucedido do CI na branch 'main'."
+            echo "Erro: Não foi possível encontrar o último run bem-sucedido do CI"
             exit 1
           fi
           echo "ci_run_id=$CI_RUN_ID" >> $GITHUB_ENV
