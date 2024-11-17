@@ -23,23 +23,13 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Get run ID of "Continuous Integration" workflow
-        id: get-run-id
-        run: |
-          WF_NAME="Continuous Integration"
-          RUN_ID=$(gh run list --workflow "$WF_NAME" --json databaseId --limit 1 --jq '.[0].databaseId')
-          echo "Detected latest run id of ${RUN_ID} for workflow ${WF_NAME}"
-          echo "run-id=${RUN_ID}" >> "$GITHUB_OUTPUT"
-        env:
-          GH_TOKEN: ${{ secrets.ARTIFACT_DEPLOY_TOKEN }}
-
       - name: Download artifact from CI
         uses: actions/download-artifact@v4
         with:
           name: build # The name of the artifact to download
           path: dist
           github-token: ${{ secrets.ARTIFACT_DEPLOY_TOKEN }}
-          run-id: ${{ steps.get-run-id.outputs.run-id }}
+          run-id: ${{ github.event.workflow_run.id }}
 
       - name: Deploy to GitHub Pages
         id: deployment
