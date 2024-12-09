@@ -35,7 +35,7 @@ export const es = {
     },
     work: {
       title: "Trabajando",
-      text: "Desarrollador Fullstack Semi-Senior, he trabajado en iniciativas de internacionalización (lanzamiento del producto en {región}) y escalado tecnológico de {empresa}. Actualmente, en el equipo de arquitectura de software, estoy centrado en la implementación de arquitecturas de microservicios y sistemas basados en eventos, con el objetivo de mejorar el rendimiento y la eficiencia del producto. También dedico tiempo al desarrollo de {proyectos}.",
+      text: "Desarrollador Fullstack Semi-Senior, he trabajado en iniciativas de internacionalización (lanzamiento del producto en {region}) y escalado tecnológico de {company}. Actualmente, en el equipo de arquitectura de software, estoy centrado en la implementación de arquitecturas de microservicios y sistemas basados en eventos, con el objetivo de mejorar el rendimiento y la eficiencia del producto. También dedico tiempo al desarrollo de {projects}.",
       company: "Bling ERP",
       region: "México",
       projects: "Proyectos personales",
