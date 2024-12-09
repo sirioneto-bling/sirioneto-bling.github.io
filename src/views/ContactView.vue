@@ -48,7 +48,7 @@ const contactLinks = [
     openNewPage: true,
   },
   {
-    to: "https://github.com/sirioneto",
+    to: "https://github.com/sirioneto-bling",
     text: "contact.link.github",
     icon: IconGithub,
     openNewPage: true,

@@ -72,7 +72,7 @@
         <span class="md:inline-block hidden">{{ $t("home.link.mail") }}</span>
       </a>
       <a
-        href="https://github.com/sirioneto"
+        href="https://github.com/sirioneto-bling"
         target="_blank"
         rel="noopener"
         class="px-6 py-2 text-2xl border rounded-3xl border-[--color-border] hover:border-[--color-border-hover] hover:bg-[--color-background-soft]"
