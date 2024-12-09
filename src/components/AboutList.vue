@@ -25,7 +25,7 @@ import FlagIcon from "./icons/FlagIcon.vue";
       </template>
       <template #projects>
         <a
-          href="https://github.com/sirioneto?tab=repositories&q=&type=&language=&sort=stargazers"
+          href="https://github.com/sirioneto-bling?tab=repositories&q=&type=&language=&sort=stargazers"
           target="_blank"
           rel="noopener"
           >{{ $t("about.work.projects") }}</a
