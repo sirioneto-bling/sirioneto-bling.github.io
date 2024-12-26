@@ -1,6 +1,8 @@
 [![Continuous Integration Status](https://github.com/sirioneto/sirioneto.github.io/actions/workflows/ci.yml/badge.svg)](https://github.com/sirioneto/sirioneto.github.io/actions/workflows/ci.yml)
 [![Continuous Deploy Status](https://github.com/sirioneto/sirioneto.github.io/actions/workflows/cd.yml/badge.svg)](https://github.com/sirioneto/sirioneto.github.io/actions/workflows/cd.yml)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=sirioneto_sirioneto.github.io&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=sirioneto_sirioneto.github.io)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=sirioneto_sirioneto.github.io&metric=coverage)](https://sonarcloud.io/summary/new_code?id=sirioneto_sirioneto.github.io)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=sirioneto_sirioneto.github.io&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=sirioneto_sirioneto.github.io)
 
 
 # GitHub Pages SPA
